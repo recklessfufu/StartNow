@@ -19,3 +19,17 @@ Public Function checkXMLSpecialCharacter(text As String) As String    '×?·?×a
     End If
     
 End Function
+
+'名称：  APPEND_PARA
+'描述：  添加字符串
+'
+Public Function XML_APPEND(old As String, data As String) As String
+    XML_APPEND = old + data + Chr(13) + Chr(10)
+End Function
+
+'名称： XMl_Tag
+'描述： 加标签
+
+Public Function XML_Tag(old As String, TagName As String) As String
+    XML_Tag = "<" + TagName + ">" + old + "</" + TagName + ">" + Chr(13) + Chr(10)
+End Function
