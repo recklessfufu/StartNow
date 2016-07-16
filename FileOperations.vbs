@@ -1,4 +1,4 @@
-# StartNow
+# File Operations
 Public Sub CloseFile(fid As Integer)
     Close fid
 End Sub
@@ -51,3 +51,17 @@ Private Function UnicodeToUTF8(ch As Long, buf() As Byte) As Integer
     End If
     UnicodeToUTF8 = i
 End Function
+
+Public Sub CreateDir(sDir As String)    '创建任意目录
+    Dim fs
+    Set fs = CreateObject("Scripting.FileSystemObject")
+    Dim pDir As String
+
+    pDir = fs.GetParentFolderName(sDir)
+    If Not fs.FolderExists(pDir) Then
+        Call CreateDir(pDir)
+    End If
+    If Not fs.FolderExists(sDir) Then
+        fs.CreateFolder sDir
+    End If
+End Sub
